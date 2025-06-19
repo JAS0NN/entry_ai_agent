@@ -1,4 +1,4 @@
-# Multi-Agents for IC Design
+# AI Agents for IC Design
 This project provides a framework for utilizing multiple AI agents to automate and assist in the IC design process. It is supported by containerized infrastructure that ensures modularity and ease of use.
 
 This README serves as the entry point to the various repositories that constitute this project. It provides a high-level overview and a step-by-step guide to installing the necessary components. For detailed instructions, please refer to the `README.md` within each respective repository.
@@ -109,7 +109,6 @@ The containerized agents can be installed independently of the infrastructure an
 **Configuration Requirements:**
 - Ensure agents can make HTTP requests to RooCode's endpoint
 - If deploying agents on different machines, update the agent configuration to point to the correct RooCode server address
-- Verify network connectivity between agent deployment location and RooCode server
 
   * **Critical Path Analyzer Agent**:
     ➡️ **Installation Instructions**: [Agent Repository](https://www.google.com/search?q=https://link-to-your-agent1-repo/blob/main/README.md)
