@@ -18,6 +18,39 @@ To facilitate their operation, we have established an infrastructure that includ
 
 A key architectural feature of this project is the use of **Podman** containers. Major components including **MinIO, VS Code (code-server), the OpenLane MCP Server, the OpenLane + Flask server, and the Agents** are all packaged as containers. This approach makes the system highly modular, allowing individual components to be easily modified, updated, or replaced without disrupting the entire environment.
 
+```mermaid
+sequenceDiagram
+    participant User as User
+    participant Agent as Agent
+    participant VSCode as VSCode/Roocode
+    participant MinIO as MinIO MCP server
+    participant Storage as MinIO storage
+    participant OpenLaneMCP as OpenLane MCP server
+    participant Flask as Flask
+    participant OpenLane as OpenLane
+
+    User->>Agent: Interact to generate modified RTL
+    Agent-->>User: Return modified RTL code
+    User->>VSCode: Command to run EDA tool
+    VSCode->>MinIO: Request to upload design files
+    MinIO->>Storage: Store design files
+    Storage-->>MinIO: Design files uploaded
+    MinIO-->>VSCode: Provide presigned_url (download link)
+    VSCode->>OpenLaneMCP: Call with credentials and presigned_url
+    OpenLaneMCP->>Flask: HTTP GET request (with presigned_url and parameters)
+    Flask->>Flask: Parse presigned_url and parameters
+    Flask->>OpenLane: Execute OpenLane flow (using design data from presigned_url)
+    OpenLane-->>Flask: Return execution results
+    Flask->>OpenLaneMCP: Upload OpenLane result package
+    OpenLaneMCP-->>Flask: Provide new presigned_url (for result download)
+    OpenLaneMCP-->>VSCode: Return new presigned_url
+    VSCode-->>User: Display EDA tool results
+```
+While the sequence diagram above shows the user interacting with VS Code/RooCode manually, we have extended the system to support automation via HTTP requests. Specifically, RooCode has been modified to expose port 30005 as an HTTP endpoint.
+
+This allows agents (or other automated programs) to send POST requests directly to RooCode, mimicking human interactions with the RooCode chatbox interface. In this setup, an agent can "type" commands or requests into RooCode programmatically, just as a user would through the web UI.
+
+To enable this capability, you'll need to extend your agent's implementation to generate and send HTTP POST requests to RooCode. Our agent sample implementations already include example code demonstrating how to issue HTTP requests for this purpose.
 ## Repositories
 
 This project is distributed across the following seven repositories:
