@@ -104,16 +104,11 @@ Finally, deploy the VS Code (code-server) container. This is your primary interf
 -----
 
 ### Part 2: Agent Installation
-The containerized agents can be installed independently of the infrastructure and can run on the same machine or different machines as needed. The only requirement is network connectivity to RooCode's HTTP endpoint.
-
-**Configuration Requirements:**
-- Ensure agents can make HTTP requests to RooCode's endpoint
-- If deploying agents on different machines, update the agent configuration to point to the correct RooCode server address
 
   * **Critical Path Analyzer Agent**:
-    ➡️ **Installation Instructions**: [Agent Repository](https://www.google.com/search?q=https://link-to-your-agent1-repo/blob/main/README.md)
+    ➡️ **Installation Instructions**: [Agent Repository](https://github.com/mtkresearch/critical_path_analyze_agent)
   * **Hardware Sharing Agent**:
-    ➡️ **Installation Instructions**: [Agent Repository](https://www.google.com/search?q=https://link-to-your-agent2-repo/blob/main/README.md)
+    ➡️ **Installation Instructions**: [Agent Repository](https://github.com/mtkresearch/hardware_sharing_agent)
 
 ## Getting Started
 Once the infrastructure components are deployed, you can start interacting with the system through the VS Code web interface. The RooCode extension will allow you to connect to the MCP servers and, once the agents are deployed, invoke them to work on your IC design projects. For specific usage instructions and examples, please refer to the documentation within the agent repositories.
