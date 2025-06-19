@@ -1,7 +1,7 @@
 ## Deployment Architecture
 
 ### Infrastructure Deployment
-All infrastructure components are designed to run in Podman containers. While the default configuration assumes that all containers are running on a single Linux instance, you can deploy them on different hosts by modifying the localhost:port settings in each component.
+All infrastructure components run in Podman containers. By default, they run on a single Linux host, but you can distribute them across multiple hosts by adjusting the localhost:port settings.
 
 ### Agent Deployment
 Agents can operate independently and don't need to be on the same host as infrastructure. If you want agents to interact with Roocode, the only requirement is network connectivity to RooCode's HTTP endpoint.
