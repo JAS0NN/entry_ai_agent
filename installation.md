@@ -18,7 +18,7 @@ This project is distributed across the following seven repositories:
 6.  **[Hardware Sharing Agent](https://github.com/mtkresearch/hardware_sharing_agent)**: The containerized Hardware Sharing Agent.
 7.  **[RooCode Source Code](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the RooCode VS Code extension. **Note:** You do not need to build or install this repository for setup.
 
-## Getting Started
+## Installation
 The installation is divided into two main parts: Infrastructure and Agents.
 
 ### Part 1: Infrastructure Setup
