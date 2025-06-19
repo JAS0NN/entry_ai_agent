@@ -1,23 +1,31 @@
 # Multi-Agents for IC Design
+This project provides a framework for utilizing multiple AI agents to automate and assist in the Integrated Circuit (IC) design process. The ecosystem is supported by containerized infrastructure that ensures modularity and ease of use.
 
-Welcome to the Multi-Agents for IC Design project\! This project provides a comprehensive framework for utilizing multiple AI agents to automate and assist in the Integrated Circuit (IC) design process. The ecosystem is supported by a robust, containerized infrastructure that ensures modularity and ease of use.
-
-This README serves as the central entry point to the various repositories that constitute this project. It provides a high-level overview and a step-by-step guide to installing the necessary components. For detailed instructions, please refer to the `README.md` within each respective repository.
+This README serves as the entry point to the various repositories that constitute this project. It provides a high-level overview and a step-by-step guide to installing the necessary components. For detailed instructions, please refer to the `README.md` within each respective repository.
 
 ## Overview
-
 The core of this project revolves around two specialized agents: a **Critical Path Analyzer Agent** and a **Hardware Sharing Agent**. These agents work in tandem to optimize IC designs.
 
 To facilitate their operation, we have established an infrastructure that includes:
-
   * **MinIO**: A private S3-compatible object storage.
-  * **VS Code (code-server) with RooCode Extension**: A web-based development environment for interacting with the entire system.
-  * **MCP Servers**: Micro-Component Protocol (MCP) servers that act as a bridge to powerful EDA tools like OpenLane 2.
+  * **VS Code (code-server) with RooCode Extension**: A browser-based development environment.
+  * **MCP Server**: A remote Model Context Protocol (MCP) server that act as a bridge to EDA tools like OpenLane 2.
+  * **EDA tools**: Flask server & Openlane2
 
 ### Containerized Architecture with Podman
-
 A key architectural feature of this project is the use of **Podman** containers. Major components including **MinIO, VS Code (code-server), the OpenLane MCP Server, the OpenLane + Flask server, and the Agents** are all packaged as containers. This approach makes the system highly modular, allowing individual components to be easily modified, updated, or replaced without disrupting the entire environment.
 
+## Deployment Architecture
+
+### Infrastructure Deployment
+All infrastructure components are designed to run on a single Linux machine using Podman containers. For distributed deployment, modify the localhost:port configurations in each component.
+
+### Agent Deployment
+Agents can operate independently and don't need to be on the same host as infrastructure. If you want agents to interact with Roocode, the only requirement is network connectivity to RooCode's HTTP endpoint.
+
+This is much better - it's direct, clear, and removes all the redundant explanations while keeping the key technical details that users need to know.
+
+## System Workflow Sequence Diagram
 ```mermaid
 sequenceDiagram
     participant User as User
@@ -28,7 +36,6 @@ sequenceDiagram
     participant OpenLaneMCP as OpenLane MCP server
     participant Flask as Flask
     participant OpenLane as OpenLane
-
     User->>Agent: Interact to generate modified RTL
     Agent-->>User: Return modified RTL code
     User->>VSCode: Command to run EDA tool
@@ -46,13 +53,14 @@ sequenceDiagram
     OpenLaneMCP-->>VSCode: Return new presigned_url
     VSCode-->>User: Display EDA tool results
 ```
+
 While the sequence diagram above shows the user interacting with VS Code/RooCode manually, we have extended the system to support automation via HTTP requests. Specifically, RooCode has been modified to expose port 30005 as an HTTP endpoint.
 
 This allows agents (or other automated programs) to send POST requests directly to RooCode, mimicking human interactions with the RooCode chatbox interface. In this setup, an agent can "type" commands or requests into RooCode programmatically, just as a user would through the web UI.
 
 To enable this capability, you'll need to extend your agent's implementation to generate and send HTTP POST requests to RooCode. Our agent sample implementations already include example code demonstrating how to issue HTTP requests for this purpose.
-## Repositories
 
+## Repositories
 This project is distributed across the following seven repositories:
 
 1.  **[MinIO](https://github.com/mtkresearch/minIO_server)**: Contains the setup and Podman configuration for our private S3 object storage.
@@ -64,12 +72,15 @@ This project is distributed across the following seven repositories:
 7.  **[RooCode Source Code](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the RooCode VS Code extension. **Note:** You do not need to build or install this repository for setup.
 
 ## Installation Guide
-
 The installation is divided into two main parts: Infrastructure and Agents. The Agents can be installed independently at any time.
 
 ### Part 1: Infrastructure Setup
-
 To get the core system up and running, please follow the installation steps in the order outlined below. Each step directs you to the relevant repository, which contains detailed instructions for deploying the Podman container.
+
+**Prerequisites:**
+- Linux operating system
+- Podman installed and configured
+- Network connectivity between components (if deploying in distributed mode)
 
 **Step 1: Set Up MinIO Storage**
 Start by deploying the MinIO container, which is essential for data management.
@@ -91,18 +102,24 @@ Finally, deploy the VS Code (code-server) container. This is your primary interf
 
 ➡️ **Installation Instructions**: [VS Code with RooCode Extension Repository README](https://www.google.com/search?q=https://link-to-your-vscode-roocode-repo/blob/main/README.md)
 
+**Configuration Notes:**
+- For single-machine deployment: Use the default localhost:port configurations
+- For distributed deployment: Modify the localhost:port settings in each component's configuration to match your network topology
+
 -----
 
 ### Part 2: Agent Installation
+The containerized agents can be installed independently of the infrastructure and can run on the same machine or different machines as needed. The only requirement is network connectivity to RooCode's HTTP endpoint.
 
-The containerized agents can be installed independently of the infrastructure. Please refer to their respective repositories for setup instructions.
+**Configuration Requirements:**
+- Ensure agents can make HTTP requests to RooCode's endpoint (default: port 30005)
+- If deploying agents on different machines, update the agent configuration to point to the correct RooCode server address
+- Verify network connectivity between agent deployment location and RooCode server
 
   * **Critical Path Analyzer Agent**:
     ➡️ **Installation Instructions**: [Agent1 Repository README](https://www.google.com/search?q=https://link-to-your-agent1-repo/blob/main/README.md)
-
   * **Hardware Sharing Agent**:
     ➡️ **Installation Instructions**: [Agent2 Repository README](https://www.google.com/search?q=https://link-to-your-agent2-repo/blob/main/README.md)
 
 ## Getting Started
-
 Once the infrastructure components are deployed, you can start interacting with the system through the VS Code web interface. The RooCode extension will allow you to connect to the MCP servers and, once the agents are deployed, invoke them to work on your IC design projects. For specific usage instructions and examples, please refer to the documentation within the agent repositories.
