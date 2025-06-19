@@ -1,5 +1,5 @@
 # Multi-Agents for IC Design
-This project provides a framework for utilizing multiple AI agents to automate and assist in the Integrated Circuit (IC) design process. The ecosystem is supported by containerized infrastructure that ensures modularity and ease of use.
+This project provides a framework for utilizing multiple AI agents to automate and assist in the IC design process. It is supported by containerized infrastructure that ensures modularity and ease of use.
 
 This README serves as the entry point to the various repositories that constitute this project. It provides a high-level overview and a step-by-step guide to installing the necessary components. For detailed instructions, please refer to the `README.md` within each respective repository.
 
@@ -18,12 +18,10 @@ A key architectural feature of this project is the use of **Podman** containers.
 ## Deployment Architecture
 
 ### Infrastructure Deployment
-All infrastructure components are designed to run on a single Linux machine using Podman containers. For distributed deployment, modify the localhost:port configurations in each component.
+All infrastructure components are designed to run in Podman containers. While the default configuration assumes that all containers are running on a single Linux instance, you can deploy them on different hosts by modifying the localhost:port settings in each component.
 
 ### Agent Deployment
 Agents can operate independently and don't need to be on the same host as infrastructure. If you want agents to interact with Roocode, the only requirement is network connectivity to RooCode's HTTP endpoint.
-
-This is much better - it's direct, clear, and removes all the redundant explanations while keeping the key technical details that users need to know.
 
 ## System Workflow Sequence Diagram
 ```mermaid
@@ -56,7 +54,7 @@ sequenceDiagram
 
 While the sequence diagram above shows the user interacting with VS Code/RooCode manually, we have extended the system to support automation via HTTP requests. Specifically, RooCode has been modified to expose port 30005 as an HTTP endpoint.
 
-This allows agents (or other automated programs) to send POST requests directly to RooCode, mimicking human interactions with the RooCode chatbox interface. In this setup, an agent can "type" commands or requests into RooCode programmatically, just as a user would through the web UI.
+This allows agents to send POST requests directly to RooCode, mimicking human interactions with the RooCode chatbox interface. 
 
 To enable this capability, you'll need to extend your agent's implementation to generate and send HTTP POST requests to RooCode. Our agent sample implementations already include example code demonstrating how to issue HTTP requests for this purpose.
 
