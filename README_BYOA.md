@@ -1,50 +1,60 @@
-# AI Agents for IC Design: Towards a "Bring Your Own Agent" (BYOA) Future
+# AI Agents for IC Design: Unlock Your "Bring Your Own Agent" (BYOA) Future
 
-This project demonstrates a framework for **Bring Your Own Agent (BYOA)** - a paradigm where individuals can easily develop specialized AI agents to automate their unique tasks, rather than relying solely on centralized AI solutions built by expert teams.
+Imagine an AI agent that works exactly the way you do, designed by you, for your unique tasks. That's the power of **Bring Your Own Agent (BYOA)**. This project introduces a framework that empowers *individuals* to develop specialized AI agents, moving beyond the traditional reliance on centralized AI solutions built by large teams.
 
-## The BYOA Vision
+## Why BYOA? Empowering *You* with AI
 
-BYOA represents a complementary approach: **empowering individuals to develop their own AI agents tailored to their specific needs**.Currently, most enterprises rely on AI specialist teams and developers—to build shared AI solutions
+-----
 
+Today, AI development is often centralized, with specialist teams building solutions for everyone. But what if you could have an AI agent perfectly tailored to *your* specific needs and workflows?
 
-## Our BYOA Examples
+**BYOA offers a powerful alternative:** it empowers you to be the architect of your own AI solutions. This isn't just about using AI; it's about **creating your own intelligent automation**, designed to solve your unique challenges and enhance your productivity.
 
+## See BYOA in Action: IC Design Automation Agents
 
-### IC Design Automation Agents
+-----
 
-This implementation showcases BYOA principles through two specialized agents designed for IC design workflows:
+To demonstrate the potential of BYOA, we've developed two specialized AI agents for common IC design workflows:
 
-- **Critical Path Analyzer Agent**: Automatically identifies and optimizes timing-critical paths in digital designs
-- **Hardware Sharing Agent**: Intelligently manages and optimizes shared hardware resources
+  * **Critical Path Analyzer Agent**: Tackle timing bottlenecks early. This agent identifies critical timing paths and proposes optimizations directly at the RTL level, helping you proactively resolve issues and accelerate your design workflow before synthesis.
+  * **Hardware Sharing Agent**:  Optimize your resources and reduce costs. This agent analyzes your RTL designs to detect redundant arithmetic units (like adders or multipliers) and automatically generates optimized code that shares hardware, reducing resource usage without compromising functionality.
 
-### Architecture: BYOA-Enabled Infrastructure
+## The Containerized Infrastructure
 
-Our containerized architecture embodies BYOA principles by providing:
+-----
 
-- **MinIO**: Private, secure data storage for individual agent workflows
-- **VS Code with RooCode Extension**: Browser-based development environment eliminating setup barriers
-- **MCP Server**: Standardized bridge to professional EDA tools
-- **Containerized Agents**: Self-contained, easily deployable agent instances
+Our containerized infrastructure enables your agents to seamlessly connect with the RooCode coding agent and other tools via the Model Context Protocol (MCP) configured on RooCode. This setup includes:
 
+  * **MinIO**: A private data storage.
+  * **VS Code with RooCode Extension**: A browser-based development environment.
+  * **Remote MCP Server**: A standardized bridge to Electronic Design Automation (EDA) tools.
+  * **OpenLane2**: An open-source EDA flow that provides automated synthesis, place-and-route, and other critical steps for chip design.
 
-## Getting Started with BYOA
+## Get Started: Build Your Own Agent Today
 
-This project is distributed across seven repositories, each representing a key component in the BYOA ecosystem:
+-----
+
+Ready to step into the future of personalized AI? This project is distributed across seven interconnected repositories.
 
 ### Agent Examples
-1. **[Critical Path Analyzer Agent](https://github.com/mtkresearch/critical_path_analyze_agent)**
-2. **[Hardware Sharing Agent](https://github.com/mtkresearch/hardware_sharing_agent)**
+
+Explore our ready-to-use examples to see BYOA in action or use them as a starting point for your own creations:
+
+1.  **[Critical Path Analyzer Agent](https://github.com/mtkresearch/critical_path_analyze_agent)**
+2.  **[Hardware Sharing Agent](https://github.com/mtkresearch/hardware_sharing_agent)**
 
 ### Infrastructure Components
-1. **[MinIO Storage](https://github.com/mtkresearch/minIO_server)**: A private S3-compatible object storage.
-2. **[VS Code Environment](https://github.com/mtkresearch/codeserver)**: A browser-based development environment.
-3. **[OpenLane MCP Server](https://github.com/mtkresearch/openlane_mcp_server)**: A remote Model Context Protocol (MCP) server that act as a bridge to EDA tools like OpenLane 2.
-4. **[EDA tools](https://github.com/mtkresearch/openlane_docker)**: Flask server & Openlane2
-5. **[RooCode Extension](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the RooCode VS Code extension.
 
+These repositories provide the foundational tools to set up your BYOA environment:
 
+1.  **[MinIO Storage](https://github.com/mtkresearch/minIO_server)**: Your personal S3-compatible object storage.
+2.  **[VS Code Environment](https://github.com/mtkresearch/codeserver)**: Your browser-based development hub.
+3.  **[OpenLane MCP Server](https://github.com/mtkresearch/openlane_mcp_server)**: The bridge to EDA tools like OpenLane 2.
+4.  **[EDA tools](https://github.com/mtkresearch/openlane_docker)**: The Flask server and OpenLane2 integration.
+5.  **[RooCode Extension](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the essential RooCode VS Code extension.
 
+-----
 
----
+**Ready to unleash the power of personalized AI?**
 
-**Ready to experience BYOA?** Start with our infrastructure setup and begin building your first personal AI agent. The future of work isn't just AI-assisted—it's AI-empowered, with every individual capable of creating their own intelligent automation solutions.
+### **Follow our installation guide [here](https://github.com/JAS0NN/entry_ai_agent/blob/main/installation.md)**
