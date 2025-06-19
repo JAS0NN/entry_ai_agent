@@ -83,26 +83,23 @@ To get the core system up and running, please follow the installation steps in t
 **Step 1: Set Up MinIO Storage**
 Start by deploying the MinIO container, which is essential for data management.
 
-➡️ **Installation Instructions**: [MinIO Repository README](https://github.com/mtkresearch/minIO_server)
+➡️ **Installation Instructions**: [MinIO Repository](https://github.com/mtkresearch/minIO_server)
 
 **Step 2: Set Up the OpenLane + Flask Server**
 Deploy the container for the Flask server, which provides a high-level API for EDA tool interaction.
 
-➡️ **Installation Instructions**: [OpenLane + Flask Repository README](https://github.com/mtkresearch/openlane_docker)
+➡️ **Installation Instructions**: [OpenLane + Flask Repository](https://github.com/mtkresearch/openlane_docker)
 
 **Step 3: Set Up the OpenLane Remote MCP Server**
 Deploy the container for the MCP server, which acts as the bridge to the OpenLane 2 EDA tool.
 
-➡️ **Installation Instructions**: [OpenLane Remote MCP Server Repository README](https://github.com/mtkresearch/openlane_mcp_server)
+➡️ **Installation Instructions**: [OpenLane Remote MCP Server Repository](https://github.com/mtkresearch/openlane_mcp_server)
 
 **Step 4: Deploy the VS Code Environment**
 Finally, deploy the VS Code (code-server) container. This is your primary interface for the project and comes with the RooCode extension pre-loaded.
 
-➡️ **Installation Instructions**: [VS Code with RooCode Extension Repository README](https://github.com/mtkresearch/codeserver)
+➡️ **Installation Instructions**: [VS Code with RooCode Extension Repository](https://github.com/mtkresearch/codeserver)
 
-**Configuration Notes:**
-- For single-machine deployment: Use the default localhost:port configurations
-- For distributed deployment: Modify the localhost:port settings in each component's configuration to match your network topology
 
 -----
 
@@ -110,14 +107,14 @@ Finally, deploy the VS Code (code-server) container. This is your primary interf
 The containerized agents can be installed independently of the infrastructure and can run on the same machine or different machines as needed. The only requirement is network connectivity to RooCode's HTTP endpoint.
 
 **Configuration Requirements:**
-- Ensure agents can make HTTP requests to RooCode's endpoint (default: port 30005)
+- Ensure agents can make HTTP requests to RooCode's endpoint
 - If deploying agents on different machines, update the agent configuration to point to the correct RooCode server address
 - Verify network connectivity between agent deployment location and RooCode server
 
   * **Critical Path Analyzer Agent**:
-    ➡️ **Installation Instructions**: [Agent1 Repository README](https://www.google.com/search?q=https://link-to-your-agent1-repo/blob/main/README.md)
+    ➡️ **Installation Instructions**: [Agent Repository](https://www.google.com/search?q=https://link-to-your-agent1-repo/blob/main/README.md)
   * **Hardware Sharing Agent**:
-    ➡️ **Installation Instructions**: [Agent2 Repository README](https://www.google.com/search?q=https://link-to-your-agent2-repo/blob/main/README.md)
+    ➡️ **Installation Instructions**: [Agent Repository](https://www.google.com/search?q=https://link-to-your-agent2-repo/blob/main/README.md)
 
 ## Getting Started
 Once the infrastructure components are deployed, you can start interacting with the system through the VS Code web interface. The RooCode extension will allow you to connect to the MCP servers and, once the agents are deployed, invoke them to work on your IC design projects. For specific usage instructions and examples, please refer to the documentation within the agent repositories.
