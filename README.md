@@ -55,13 +55,13 @@ To enable this capability, you'll need to extend your agent's implementation to 
 
 This project is distributed across the following seven repositories:
 
-1.  **[MinIO](https://www.google.com/search?q=https://link-to-your-minio-repo)**: Contains the setup and Podman configuration for our private S3 object storage.
-2.  **[VS Code with RooCode Extension](https://www.google.com/search?q=https://link-to-your-vscode-roocode-repo)**: Provides the customized VS Code (code-server) environment, containerized with Podman. The pre-compiled RooCode extension (`.vsix`) is included.
-3.  **[OpenLane Remote MCP Server](https://www.google.com/search?q=https://link-to-your-openlane-mcp-repo)**: The containerized server that exposes OpenLane 2 functionalities via MCP.
-4.  **[OpenLane + Flask Server](https://www.google.com/search?q=https://link-to-your-openlane-flask-repo)**: A containerized Flask-based server that provides a higher-level API for interacting with OpenLane.
+1.  **[MinIO](https://github.com/mtkresearch/minIO_server)**: Contains the setup and Podman configuration for our private S3 object storage.
+2.  **[VS Code with RooCode Extension](https://github.com/mtkresearch/codeserver)**: Provides the customized VS Code (code-server) environment, containerized with Podman. The pre-compiled RooCode extension (`.vsix`) is included.
+3.  **[OpenLane Remote MCP Server](https://github.com/mtkresearch/openlane_mcp_server)**: The containerized server that exposes OpenLane 2 functionalities via MCP.
+4.  **[OpenLane + Flask Server](https://github.com/mtkresearch/openlane_docker)**: A containerized Flask-based server that provides a higher-level API for interacting with OpenLane.
 5.  **[Critical Path Analyzer Agent](https://www.google.com/search?q=https://link-to-your-agent1-repo)**: The containerized Critical Path Analyzer Agent.
 6.  **[Hardware Sharing Agent](https://www.google.com/search?q=https://link-to-your-agent2-repo)**: The containerized Hardware Sharing Agent.
-7.  **[RooCode Source Code](https://www.google.com/search?q=https://link-to-your-roocode-source-repo)**: The source code for the RooCode VS Code extension. **Note:** You do not need to build or install this repository for setup.
+7.  **[RooCode Source Code](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the RooCode VS Code extension. **Note:** You do not need to build or install this repository for setup.
 
 ## Installation Guide
 
