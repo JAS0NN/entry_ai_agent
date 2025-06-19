@@ -14,8 +14,8 @@ This project is distributed across the following seven repositories:
 2.  **[VS Code with RooCode Extension](https://github.com/mtkresearch/codeserver)**: Provides the customized VS Code (code-server) environment, containerized with Podman. The pre-compiled RooCode extension (`.vsix`) is included.
 3.  **[OpenLane Remote MCP Server](https://github.com/mtkresearch/openlane_mcp_server)**: The containerized server that exposes OpenLane 2 functionalities via MCP.
 4.  **[OpenLane + Flask Server](https://github.com/mtkresearch/openlane_docker)**: A containerized Flask-based server that provides a higher-level API for interacting with OpenLane.
-5.  **[Critical Path Analyzer Agent](https://www.google.com/search?q=https://link-to-your-agent1-repo)**: The containerized Critical Path Analyzer Agent.
-6.  **[Hardware Sharing Agent](https://www.google.com/search?q=https://link-to-your-agent2-repo)**: The containerized Hardware Sharing Agent.
+5.  **[Critical Path Analyzer Agent](https://github.com/mtkresearch/critical_path_analyze_agent)**: The containerized Critical Path Analyzer Agent.
+6.  **[Hardware Sharing Agent](https://github.com/mtkresearch/hardware_sharing_agent)**: The containerized Hardware Sharing Agent.
 7.  **[RooCode Source Code](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the RooCode VS Code extension. **Note:** You do not need to build or install this repository for setup.
 
 ## Getting Started
