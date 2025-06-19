@@ -1,10 +1,10 @@
 # AI Agents for IC Design
 This project provides a framework for utilizing multiple AI agents to automate and assist in the IC design process. It is supported by containerized infrastructure that ensures modularity and ease of use.
 
-This README serves as the entry point to the various repositories that constitute this project. It provides a high-level overview and a step-by-step guide to installing the necessary components. For detailed instructions, please refer to the `README.md` within each respective repository.
+This README serves as the entry point to the various repositories that constitute this project. It provides a high-level overview of the necessary components. For detailed installation guide, please refer to each repositories.
 
 ## Overview
-The core of this project revolves around two specialized agents: a **Critical Path Analyzer Agent** and a **Hardware Sharing Agent**. These agents work in tandem to optimize IC designs.
+The core of this project revolves around two specialized agents: a **Critical Path Analyzer Agent** and a **Hardware Sharing Agent**.
 
 To facilitate their operation, we have established an infrastructure that includes:
   * **MinIO**: A private S3-compatible object storage.
@@ -23,40 +23,6 @@ All infrastructure components are designed to run in Podman containers. While th
 ### Agent Deployment
 Agents can operate independently and don't need to be on the same host as infrastructure. If you want agents to interact with Roocode, the only requirement is network connectivity to RooCode's HTTP endpoint.
 
-## System Workflow Sequence Diagram
-```mermaid
-sequenceDiagram
-    participant User as User
-    participant Agent as Agent
-    participant VSCode as VSCode/Roocode
-    participant MinIO as MinIO MCP server
-    participant Storage as MinIO storage
-    participant OpenLaneMCP as OpenLane MCP server
-    participant Flask as Flask
-    participant OpenLane as OpenLane
-    User->>Agent: Interact to generate modified RTL
-    Agent-->>User: Return modified RTL code
-    User->>VSCode: Command to run EDA tool
-    VSCode->>MinIO: Request to upload design files
-    MinIO->>Storage: Store design files
-    Storage-->>MinIO: Design files uploaded
-    MinIO-->>VSCode: Provide presigned_url (download link)
-    VSCode->>OpenLaneMCP: Call with credentials and presigned_url
-    OpenLaneMCP->>Flask: HTTP GET request (with presigned_url and parameters)
-    Flask->>Flask: Parse presigned_url and parameters
-    Flask->>OpenLane: Execute OpenLane flow (using design data from presigned_url)
-    OpenLane-->>Flask: Return execution results
-    Flask->>OpenLaneMCP: Upload OpenLane result package
-    OpenLaneMCP-->>Flask: Provide new presigned_url (for result download)
-    OpenLaneMCP-->>VSCode: Return new presigned_url
-    VSCode-->>User: Display EDA tool results
-```
-
-While the sequence diagram above shows the user interacting with VS Code/RooCode manually, we have extended the system to support automation via HTTP requests. Specifically, RooCode has been modified to expose port 30005 as an HTTP endpoint.
-
-This allows agents to send POST requests directly to RooCode, mimicking human interactions with the RooCode chatbox interface. 
-
-To enable this capability, you'll need to extend your agent's implementation to generate and send HTTP POST requests to RooCode. Our agent sample implementations already include example code demonstrating how to issue HTTP requests for this purpose.
 
 ## Repositories
 This project is distributed across the following seven repositories:
@@ -69,8 +35,8 @@ This project is distributed across the following seven repositories:
 6.  **[Hardware Sharing Agent](https://www.google.com/search?q=https://link-to-your-agent2-repo)**: The containerized Hardware Sharing Agent.
 7.  **[RooCode Source Code](https://github.com/mtkresearch/Roo-Code/tree/http_feat)**: The source code for the RooCode VS Code extension. **Note:** You do not need to build or install this repository for setup.
 
-## Installation Guide
-The installation is divided into two main parts: Infrastructure and Agents. The Agents can be installed independently at any time.
+## Getting Started
+The installation is divided into two main parts: Infrastructure and Agents.
 
 ### Part 1: Infrastructure Setup
 To get the core system up and running, please follow the installation steps in the order outlined below. Each step directs you to the relevant repository, which contains detailed instructions for deploying the Podman container.
@@ -110,5 +76,41 @@ Finally, deploy the VS Code (code-server) container. This is your primary interf
   * **Hardware Sharing Agent**:
     ➡️ **Installation Instructions**: [Agent Repository](https://github.com/mtkresearch/hardware_sharing_agent)
 
-## Getting Started
+
 Once the infrastructure components are deployed, you can start interacting with the system through the VS Code web interface. The RooCode extension will allow you to connect to the MCP servers and, once the agents are deployed, invoke them to work on your IC design projects. For specific usage instructions and examples, please refer to the documentation within the agent repositories.
+
+## System Workflow Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant User as User
+    participant Agent as Agent
+    participant VSCode as VSCode/Roocode
+    participant MinIO as MinIO MCP server
+    participant Storage as MinIO storage
+    participant OpenLaneMCP as OpenLane MCP server
+    participant Flask as Flask
+    participant OpenLane as OpenLane
+    User->>Agent: Interact to generate modified RTL
+    Agent-->>User: Return modified RTL code
+    User->>VSCode: Command to run EDA tool
+    VSCode->>MinIO: Request to upload design files
+    MinIO->>Storage: Store design files
+    Storage-->>MinIO: Design files uploaded
+    MinIO-->>VSCode: Provide presigned_url (download link)
+    VSCode->>OpenLaneMCP: Call with credentials and presigned_url
+    OpenLaneMCP->>Flask: HTTP GET request (with presigned_url and parameters)
+    Flask->>Flask: Parse presigned_url and parameters
+    Flask->>OpenLane: Execute OpenLane flow (using design data from presigned_url)
+    OpenLane-->>Flask: Return execution results
+    Flask->>OpenLaneMCP: Upload OpenLane result package
+    OpenLaneMCP-->>Flask: Provide new presigned_url (for result download)
+    OpenLaneMCP-->>VSCode: Return new presigned_url
+    VSCode-->>User: Display EDA tool results
+```
+
+While the sequence diagram above shows the user interacting with VS Code/RooCode manually, we have extended the system to support automation via HTTP requests. Specifically, RooCode has been modified to expose port 30005 as an HTTP endpoint.
+
+This allows agents to send POST requests directly to RooCode, mimicking human interactions with the RooCode chatbox interface. 
+
+To enable this capability, you'll need to extend your agent's implementation to generate and send HTTP POST requests to RooCode. Our agent sample implementations already include example code demonstrating how to issue HTTP requests for this purpose.
+
