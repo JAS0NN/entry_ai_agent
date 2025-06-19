@@ -55,6 +55,7 @@ These repositories provide the foundational tools to set up your BYOA environmen
 
 -----
 
-**Ready to unleash the power of personalized AI?**
+## Take the Next Step
 
-### **Follow our installation guide [here](https://github.com/JAS0NN/entry_ai_agent/blob/main/installation.md)**
+Unleash your creativity and transform IC design with BYOA. Begin your journey by following our installation guide.
+Access the installation guide [here](https://github.com/JAS0NN/entry_ai_agent/blob/main/installation.md)
