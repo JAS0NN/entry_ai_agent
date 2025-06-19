@@ -83,22 +83,22 @@ To get the core system up and running, please follow the installation steps in t
 **Step 1: Set Up MinIO Storage**
 Start by deploying the MinIO container, which is essential for data management.
 
-➡️ **Installation Instructions**: [MinIO Repository README](https://www.google.com/search?q=https://link-to-your-minio-repo/blob/main/README.md)
+➡️ **Installation Instructions**: [MinIO Repository README](https://github.com/mtkresearch/minIO_server)
 
 **Step 2: Set Up the OpenLane + Flask Server**
 Deploy the container for the Flask server, which provides a high-level API for EDA tool interaction.
 
-➡️ **Installation Instructions**: [OpenLane + Flask Repository README](https://www.google.com/search?q=https://link-to-your-openlane-flask-repo/blob/main/README.md)
+➡️ **Installation Instructions**: [OpenLane + Flask Repository README](https://github.com/mtkresearch/openlane_docker)
 
 **Step 3: Set Up the OpenLane Remote MCP Server**
 Deploy the container for the MCP server, which acts as the bridge to the OpenLane 2 EDA tool.
 
-➡️ **Installation Instructions**: [OpenLane Remote MCP Server Repository README](https://www.google.com/search?q=https://link-to-your-openlane-mcp-repo/blob/main/README.md)
+➡️ **Installation Instructions**: [OpenLane Remote MCP Server Repository README](https://github.com/mtkresearch/openlane_mcp_server)
 
 **Step 4: Deploy the VS Code Environment**
 Finally, deploy the VS Code (code-server) container. This is your primary interface for the project and comes with the RooCode extension pre-loaded.
 
-➡️ **Installation Instructions**: [VS Code with RooCode Extension Repository README](https://www.google.com/search?q=https://link-to-your-vscode-roocode-repo/blob/main/README.md)
+➡️ **Installation Instructions**: [VS Code with RooCode Extension Repository README](https://github.com/mtkresearch/codeserver)
 
 **Configuration Notes:**
 - For single-machine deployment: Use the default localhost:port configurations
